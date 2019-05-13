@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+        <!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <style>
+        
+           .flex
+           {
+              /* basic styling */
+              width: 350px;
+              height: 200px;
+              border: 1px solid #555;
+              font: 14px Arial;
+        
+              /* flexbox setup */
+              display: -webkit-flex;
+              -webkit-flex-direction: row;
+        
+              display: flex;
+              flex-direction: row;
+           }
+        
+           .flex > div
+           {
+              -webkit-flex: 1 1 auto;
+              flex: 1 1 auto;
+        
+              width: 30px; /* To make the transition work nicely.  (Transitions to/from
+                              "width:auto" are buggy in Gecko and Webkit, at least.
+                              See http://bugzil.la/731886 for more info.) */
+        
+              -webkit-transition: width 0.7s ease-out;
+              transition: width 0.7s ease-out;
+           }
+        
+           /* colors */
+           .flex > div:nth-child(1){ background : #009246; }
+           .flex > div:nth-child(2){ background : #F1F2F1; }
+           .flex > div:nth-child(3){ background : #CE2B37; }
+        
+           .flex > div:hover
+           {
+                width: 200px;
+           }
+           
+           </style>
+            
+         </head>
+         <body>
+          <p>Flexbox nuovo</p>
+          <div class="flex">
+            <div>uno</div>
+            <div>due</div>
+            <div>tre</div>
+          </div>
+         </body>
+        </html>
+        Ejemplo de "Diseño del Santo Gríal"Sección
+        Este ejemplo muestra como la "caja flexible" proporciona la habilidad de cambiar dinámicamente el diseño para distintas resoluciones de pantalla. El diagrama siguiente ilustra la transformación.
+        
+        HolyGrailLayout.png
+        
+        Aquí se muestra el caso en que el diseño de la página adaptado a un navegador tiene que mostrarse óptimamente en un smartphone. No solamente los elementos se reducen de tamaño, sino que el orden en que se muestran también cambia. La "caja flexible" lo hace muy sencillo.
+        
+        ​
+        <!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <style>
+        
+          body {
+           font: 24px Helvetica;
+           background: #999999;
+          }
+        
+          #main {
+           min-height: 800px;
+           margin: 0px;
+           padding: 0px;
+           display: -webkit-flex;
+           display:         flex;
+           -webkit-flex-flow: row;
+                   flex-flow: row;
+           }
+         
+          #main > article {
+           margin: 4px;
+           padding: 5px;
+           border: 1px solid #cccc33;
+           border-radius: 7pt;
+           background: #dddd88;
+           -webkit-flex: 3 1 60%;
+                   flex: 3 1 60%;
+           -webkit-order: 2;
+                   order: 2;
+           }
+          
+          #main > nav {
+           margin: 4px;
+           padding: 5px;
+           border: 1px solid #8888bb;
+           border-radius: 7pt;
+           background: #ccccff;
+           -webkit-flex: 1 6 20%;
+                   flex: 1 6 20%;
+           -webkit-order: 1;
+                   order: 1;
+           }
+          
+          #main > aside {
+           margin: 4px;
+           padding: 5px;
+           border: 1px solid #8888bb;
+           border-radius: 7pt;
+           background: #ccccff;
+           -webkit-flex: 1 6 20%;
+                   flex: 1 6 20%;
+           -webkit-order: 3;
+                   order: 3;
+           }
+         
+          nav, footer {
+           display: block;
+           margin: 4px;
+           padding: 5px;
+           min-height: 100px;
+           border: 1px solid #eebb55;
+           border-radius: 7pt;
+           background: #fff;
+           }
+         
+          /* Too narrow to support three columns */
+          @media all and (max-width: 640px) {
+          
+           #main, #page {
+            -webkit-flex-flow: column;
+                    flex-flow: column;
+           }
+        
+           #main > article, #main > nav, #main > aside {
+            /* Return them to document order */
+            -webkit-order: 0;
+                    order: 0;
+           }
+          
+           #main > nav, #main > aside, header, footer {
+            min-height: 50px;
+            max-height: 50px;
+           }
+          }
+        
+         </style>
+          </head>
+          <body>
+         <header> <nav>
+                <ul>
+                 <li class="alingLogo"><a href="index.html"><img class="logo" src="img/Logo_TV_2015.png"  alt=""></a></li>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li class="drop">
+                        <a href="#">Categorias</a>
+                        
+                        <div class="dropdownContain">
+                            <div class="seleccion">
+                                <div class="triangle"></div>
+                                <ul>
+                                    <li>Pendientes</li>
+                                    <li>Bolsos</li>
+                                </ul>
+                            </div>
+                        </div>
+                    
+                    </li>
+                    <li><a class="position_sub_list" href="#">Tienda</a></li>
+                    <li><a href="#">Ayuda</a></li>
+                </ul>
+        </nav></header>
+         <div id='main'>
+            <article>article</article>
+            <nav>nav</nav>
+            <aside>aside</aside>
+         </div>
+         <footer>footer</footer>
+          </body>
+        </html>
+</body>
+</html>
